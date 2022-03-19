@@ -1,0 +1,43 @@
+body {
+            font-family: 'Microsoft YaHei';/*字体*/
+            font-size: 16px;/*字体大小*/
+            line-height: 28px;/*行间距，上间距+字的高度+下间距*/
+            /* 可以简化为：font: 16px/28px 'Microsoft YaHei' */
+        }
+        h1 {
+            /* h1文字水平居中对齐 */
+            text-align: center;
+            /* 文字不加粗=normal，700为加粗=bold */
+            font-weight: 400;
+        }
+        .gray {
+            text-align: center;
+            color: #888888;/*字体颜色*/
+            font-size: 12px;
+        }
+        a {
+            /* 去掉链接的下划线 */
+            text-decoration: none;
+        }
+        .search {
+            color: #666666;
+            width: 170px;
+        }
+        .button {
+            font-weight: 700;
+        }
+        p {
+            /* 首行缩进，em：相对当前元素一个文字的大小 */
+            text-indent: 2em;
+        }
+        .pic {
+            /* 图片居中对齐，让其父亲p标签水平居中对齐 */
+            text-align: center;
+        }
+        .footer {
+            color: #888888;
+            font-size: 12px;
+        }
+————————————————
+版权声明：本文为CSDN博主「LeTHElala」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/m0_58196292/article/details/121199021

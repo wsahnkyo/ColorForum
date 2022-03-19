@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block middle %}
+    <a href="http://127.0.0.1:5000/forum/submit">创建</a>
+
+    <div class="search bar1">
+        <form id="form" action="{{WEBREF}}/forum" method="get">
+            {% if title %}
+                      <input name="title" type="text" placeholder="请输入您要搜索的内容..." value="{{title}}">
+            {% else %}
+                    <input name="title" type="text" placeholder="请输入您要搜索的内容..." value="">
+            {% endif %}
+
+            <input id="page_index" name="page_index" type="hidden" value="{{page_index}}">
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+    <ul class="news2">
+<!--        <li><a href="http://www.zzsky.cn" id="n1">>> 欢迎访问站长天空</a><a id="n2">2008-07-19</a></li>-->
+<!--        <li><a href="http://www.zzsky.cn" id="n1">>> 欢迎访问站长天空</a><a id="n2">2008-07-19</a></li>-->
+<!--        <li><a href="http://www.zzsky.cn" id="n1">>> 欢迎访问站长天空</a><a id="n2">2008-07-19</a></li>-->
+<!--        <li><a href="http://www.zzsky.cn" id="n1">>> 欢迎访问站长天空</a><a id="n2">2008-07-19</a></li>-->
+        {% for article in articleList %}
+        {% if article.type=='1' %}
+        <li><a href="{{article.href}}" target="_blank" id="n1">>> {{ article.title
+            }}</a>
+            {% if sessionid %}
+            <a id="n2" style="color: #111" onclick="score({{article.articleid}})">| 评 分</a>
+            {% endif %}
+            <a id="n2">{{article.create_time}} </a></li>
+        {% else %}
+        <li><a href="information?articleid={{article.articleid}}">>> {{ article.title
+            }}</a>
+            {% if sessionid %}
+            <a id="n2" style="color: #111" onclick="score({{article.articleid}})">| 评 分</a>
+            {% endif %}
+            <a id="n2">{{article.create_time}} </a></li>
+        {% endif %}
+
+        {% endfor %}
+    </ul>
+    <button type="button" id="pre">前一页</button>
+    <button type="button" id="after">后一页</button>
+<script type="text/javascript">
+  $("#pre").click(function(){
+  $('#page_index').val(parseInt($('#page_index').val())-1)
+  $("#form").submit()
+  });
+  $("#after").click(function(){
+    $('#page_index').val(parseInt($('#page_index').val())+1)
+    $("#form").submit()
+  });
+
+  function score(articleid){
+  console.log(articleid)
+
+  //prompt层
+
+layer.prompt({title: '请输入评分', formType: 0}, function(pass, index){
+  var targetUrl = "{{WEBREF}}/forum/addScore";
+
+   var data = JSON.stringify({
+                        "score": pass,
+                        "articleid":articleid
+                    })
+     $.ajax({
+    type:'post',
+    url:targetUrl,
+    cache: false,
+    data:data,  //重点必须为一个变量如：data
+    dataType:'json',
+    success:function(data){
+
+      alert('评分成功');
+      window.location.href = "{{WEBREF}}/forum";
+    },
+    error:function(){
+     alert("评分失败")
+    }
+   })
+     layer.close(index);
+});
+  }
+</script>
+{% endblock %}
+

@@ -1,0 +1,35 @@
+h2.headertekst {
+  text-align: center;
+}
+
+body{
+    text-align: center;
+    width:1500px;
+    #height:100px;
+      background: url("../images/R-R.jpg");
+    #background-size:cover;
+
+}
+
+#id1{
+    margin-left: 350px;
+    border-top:1px solid #000;
+    border-left:1px solid #000;
+    border-right:1px solid #000;
+    border-bottom:1px solid #000;
+    background: #10100FFF;
+    filter:alpha(opacity=50);  /*支持 IE 浏览器*/
+    -moz-opacity:0.50; /*支持 FireFox 浏览器*/
+    opacity:0.50;  /*支持 Chrome, Opera, Safari 等浏览器*/
+
+}
+
+#id2{
+    margin-left: 400px;
+
+}
+#id3{
+    margin-left: 400px;
+
+}
+

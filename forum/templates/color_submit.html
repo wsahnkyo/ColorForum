@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block middle %}
+<form id="articleForm" role="form" action="{{WEBREF}}/color/add">
+    <div class="form-group">
+        <label for="title">标题</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="请输入标题">
+    </div>
+    <div class="form-group">
+        <label>
+            颜色分类
+        </label>
+        <select class="form-control" id="classify">
+            {% for d in dict %}
+             <option value="{{ d }}">{{ dict[d] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+  <div class="form-group">
+        <label for="title">颜色代码</label>
+        <input type="text" class="form-control" id="code" name="code" placeholder="请输入颜色代码">
+    </div>
+    <div class="form-group">
+        <label>
+            内容
+        </label>
+        <textarea name="content" id="content" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="button" id="submit" class="btn btn-default">提交</button>
+</form>
+<script type="text/javascript">
+  $("#submit").click(function(){
+
+  var targetUrl = "{{WEBREF}}/color/add";
+
+   var data = JSON.stringify({
+                        "title": $("#title").val(),
+                        "content":$("#content").val(),
+                        "classify":$("#classify").val(),
+                        "code":$("#code").val()
+                    })
+console.log(data)
+   $.ajax({
+    type:'post',
+    url:targetUrl,
+    cache: false,
+    data:data,  //重点必须为一个变量如：data
+    dataType:'json',
+    success:function(data){
+
+      alert('添加成功');
+      window.location.href = "{{WEBREF}}/color";
+    },
+    error:function(){
+     alert("请求失败")
+    }
+   })
+
+})
+
+</script>
+{% endblock %}
+

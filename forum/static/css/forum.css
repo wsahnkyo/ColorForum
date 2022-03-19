@@ -1,0 +1,29 @@
+*{margin: 0px; padding:0px;}
+
+.news2{}
+.news2 li{ list-style:none; clear:both;margin-top:10px; border-bottom:1px dashed #ccc; height:16px; display:block}
+.news2 li a#n1{ text-decoration:none;float:left;}
+.news2 li a#n2{ text-decoration:none; float:right; color:#999;display:block}
+.news2 li a#n3{ float:right; padding-right:20px;color:#999; display:block}
+.news2 li a#n1:hover{ text-decoration:underline;}
+.news2 li a#n3:hover,.news li a#n3:hover{ text-decoration:none;}
+
+.bar1 {background: #A3D0C3;}
+.bar1 input {
+    border: 2px solid #7BA7AB;
+    border-radius: 5px;
+    background: #F9F0DA;
+    color: #9E9C9C;
+}
+.bar1 button {
+    top: 0;
+    right: 0;
+    background: #7BA7AB;
+    border-radius: 0 5px 5px 0;
+}
+.bar1 button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #F9F0DA;
+}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block middle %}
+    <a href="{{WEBREF}}/color/submit">创建</a>
+
+    <div class="search bar1">
+        <form id="form" action="{{WEBREF}}/color" method="get">
+            {% if title %}
+                      <input name="title" type="text" placeholder="请输入您要搜索的内容..." value="{{title}}">
+            {% else %}
+                    <input name="title" type="text" placeholder="请输入您要搜索的内容..." value="">
+            {% endif %}
+
+            <input id="page_index" name="page_index" type="hidden" value="{{page_index}}">
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+    <ul class="news2">
+        {% for color in colorList %}
+
+        <li><a href="information?colorid={{color.colorid}}">>> {{ color.title }}</a><a id="n2">{{colorList.create_time}}</a></li>
+
+        {% endfor %}
+    </ul>
+    <button type="button" id="pre">前一页</button>
+    <button type="button" id="after">后一页</button>
+<script type="text/javascript">
+  $("#pre").click(function(){
+  $('#page_index').val(parseInt($('#page_index').val())-1)
+  $("#form").submit()
+  });
+  $("#after").click(function(){
+    $('#page_index').val(parseInt($('#page_index').val())+1)
+    $("#form").submit()
+  });
+
+</script>
+{% endblock %}
+

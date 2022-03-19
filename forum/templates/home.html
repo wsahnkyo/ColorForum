@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block middle %}
+
+
+  <style>
+table td{width:150px;height:50px;}
+#d1 {padding-left:40px}
+#d2 table{border-collapse:collapse;}
+#d2 table td{border:10px solid white;}
+  </style>
+
+
+
+ <div id="d1">
+<table cellspacing=10>
+<!--<table border="1">-->
+  <tr>
+      {% for d  in dict %}
+
+{% if loop.index <=5 %}
+          <td><a href="{{WEBREF}}/color?classify={{ d }}">{{ dict[d] }}</a></td>
+      {% endif %}
+{% endfor %}
+  </tr>
+  <tr>
+      {% for d  in dict %}
+
+{% if loop.index >5 %}
+          <td><a href="{{WEBREF}}/color?classify={{ d }}">{{ dict[d] }}</a></td>
+      {% endif %}
+{% endfor %}
+  </tr>
+</table>
+ </div>
+
+
+
+
+{% endblock %}
+

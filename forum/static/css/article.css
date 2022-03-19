@@ -1,0 +1,25 @@
+.mainHeader{
+
+            padding-top: 1px;
+            padding-bottom: 1px;
+            background-color: white !important;
+            border-bottom: 5px solid #0b6cb8;
+        }
+
+        .logo_icon{
+
+            height: 38px;
+        }
+
+        .liColor{
+            color: #4f4f4f
+
+        }
+
+        .toolbar {
+            border: 1px solid #ccc;
+        }
+        .text {
+            border: 1px solid #ccc;
+            height: 500px;
+        }

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block middle %}
+<h1 >{{color.title}}</h1>
+<div style="background-color: {{color.code}}; width:1000px; height:40px;"></div>
+
+    <div class="gray">{{color.create_time}} 来源:本站 分类:{{dict[color.classify]}}
+    </div>
+
+<p >
+{{color.content}}
+
+</p>
+    <p class="footer">本文来源:本站</p>
+
+
+<h1 >文章推荐</h1>
+ <ul class="news2">
+        {% for article in articleList %}
+        {% if article.type=='1' %}
+        <li><a href="{{article.href}}" target="_blank" id="n1">>> {{ article.title
+            }}</a><a id="n2">{{article.create_time}}</a></li>
+        {% else %}
+        <li><a href="{{WEBREF}}/forum/information?articleid={{article.articleid}}">>> {{ article.title
+            }}</a><a id="n2">{{article.create_time}}</a></li>
+        {% endif %}
+
+        {% endfor %}
+</ul>
+{% endblock %}

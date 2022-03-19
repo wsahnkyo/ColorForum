@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block middle %}
+
+<div style="float:right;"><a href="{{WEBREF}}/login/outLogin">登出</a> </div>
+<h1>{{user.username}}</h1>
+{% if status==1 %}
+<h5>已关注</h5>
+{% elif  status==2 %}
+<button id="addAttention">添加关注</button>
+{%else%}
+{%endif%}
+
+
+    <h4> 关注列表：</h4>
+{% for attention in attentionList %}
+<a href="{{WEBREF}}/information?id={{ attention[0] }}"> {{ attention[1] }}</a>
+{% endfor %}
+    <h4> 我的作品：</h4>
+    <ul class="news2">
+        {% for article in articleList %}
+        {% if article.type=='1' %}
+        <li><a href="{{article.href}}" target="_blank" id="n1">>> {{ article.title
+            }}</a><a id="n2">{{article.create_time}}</a></li>
+        {% else %}
+        <li><a href="{{WEBREF}}/forum/information?articleid={{article.articleid}}">>> {{ article.title
+            }}</a><a id="n2">{{article.create_time}}</a></li>
+        {% endif %}
+
+        {% endfor %}
+    </ul>
+<script type="text/javascript">
+  $("#addAttention").click(function(){
+
+  var targetUrl = "{{WEBREF}}/information/addAttention";
+
+   var data = JSON.stringify({
+                        "id": {{user.id}}
+                    })
+   $.ajax({
+    type:'post',
+    url:targetUrl,
+    cache: false,
+    data:data,  //重点必须为一个变量如：data
+    dataType:'json',
+    success:function(data){
+
+      alert('添加成功');
+      window.location.href = "{{WEBREF}}/information?id={{user.id}}";
+    },
+    error:function(){
+     alert("请求失败")
+    }
+   })
+
+})
+</script>
+{% endblock %}
